@@ -37,3 +37,12 @@ delete_matrix(long double** mat, int nb_lines)
 
 	free(mat);
 }
+
+void
+init_matrix(long double** mat, int nb_lines, int nb_col, long double* init)
+{
+	int iter = 0;
+	for (int i = 0; i < nb_lines; i++)
+		for (int j = 0; j < nb_col; j++,iter++)
+			mat[i][j] = init[iter];
+}
