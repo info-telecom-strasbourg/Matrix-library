@@ -20,3 +20,12 @@
  *@result a matrix (two dimension table).
 */
 long double** create_matrix(int nb_lines, int nb_col);
+
+/**
+ *@brief delete a matrix.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+*/
+void delete_matrix(long double** mat, int nb_lines);
+
+#endif

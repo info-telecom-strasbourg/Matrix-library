@@ -28,3 +28,12 @@ create_matrix(int nb_lines, int nb_col)
 	}
 	return mat;
 }
+
+void
+delete_matrix(long double** mat, int nb_lines)
+{
+	for (int i = 0; i < nb_lines; i++)
+		free(mat[i]);
+
+	free(mat);
+}
