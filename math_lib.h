@@ -14,6 +14,15 @@
 	 				fprintf(stderr, "snprintf failure");} while (0)
 
 /**
+ *@brief Calcul une puissance.
+ *
+ *@param a: the number.
+ *@param exp: the exposant.
+ *@result the result.
+*/
+long double mypow(long double a, int exp);
+
+/**
  *@brief Create a matrix.
  *
  *@param nb_lines: the number of lines of the matrix.
@@ -126,5 +135,14 @@ long double matrix_trace(long double** A, int nb_lines, int nb_col);
  *@result a matrix transpose (two dimension table).
 */
 long double** matrix_transpose(long double** mat, int nb_lines, int nb_col);
+
+/**
+ *@brief Calculate a matrix determinant.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@result the determinant of the matrix.
+*/
+long double matrix_det(long double** mat, int nb_lines, int nb_col);
 
 #endif

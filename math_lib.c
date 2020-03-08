@@ -4,6 +4,18 @@
 #include <stdarg.h>
 #include "math_lib.h"
 
+long double
+mypow(long double a, int exp)
+{
+	if (exp == 0)
+		return 1;
+
+	long double res = 1;
+	for (int i = 0; i < exp; i++)
+		res*=a;
+	return res;
+}
+
 long double**
 create_matrix(int nb_lines, int nb_col)
 {
@@ -271,4 +283,44 @@ matrix_transpose(long double** mat, int nb_lines, int nb_col)
 			mat_transp[j][i] = mat[i][j];
 
 	return mat_transp;
+}
+
+long double
+matrix_det(long double** mat, int nb_lines, int nb_col)
+{
+
+	if (nb_lines != nb_col)
+		fprintf(stderr, "trace used on a not a square matrix\n");
+
+	if (nb_col == 2)
+		return (mat[0][0]*mat[1][1] - mat[1][0]* (mat[0][1]));
+
+	if (nb_lines == 1)
+		return mat[0][0];
+
+	int det = 0;
+	for (int i = 0; i < nb_col; i++)
+	{
+		long double** under_mat = create_matrix(nb_lines-1, nb_col-1);
+
+		if (under_mat == NULL)
+		{
+			fprintf(stderr, "allocation failed in matrix_det()\n");
+			return 0;
+		}
+
+		for (int k = 0; k < nb_lines-1; k++)
+		{
+			for (int l = 0; l < i; l++)
+				under_mat[k][l] = mat[k+1][l];
+			for (int l = i; l < nb_col-1; l++)
+				under_mat[k][l] = mat[k+1][l+1];
+		}
+
+		det += mypow(-1,i)*mat[0][i] * matrix_det(under_mat, nb_lines-1,
+			 			          nb_col-1);
+
+		delete_matrix(under_mat, nb_lines-1);
+	}
+	return det;
 }
