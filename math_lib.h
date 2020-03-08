@@ -145,4 +145,16 @@ long double** matrix_transpose(long double** mat, int nb_lines, int nb_col);
 */
 long double matrix_det(long double** mat, int nb_lines, int nb_col);
 
+/**
+ *@brief Extract a matrix from an other.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@param l_extract: ligne to delete.
+ *@param c_extract: column to extract
+ *@result the extracted matrix.
+*/
+long double** matrix_extract(long double** mat, int nb_lines, int nb_col,
+			     int l_extract, int c_extract);
+
 #endif

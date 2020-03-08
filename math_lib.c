@@ -324,3 +324,33 @@ matrix_det(long double** mat, int nb_lines, int nb_col)
 	}
 	return det;
 }
+
+long double**
+matrix_extract(long double** mat, int nb_lines, int nb_col,
+			     int l_extract, int c_extract)
+{
+
+	long double** extract_mat = create_matrix(nb_lines-1, nb_col-1);
+
+	if (extract_mat == NULL)
+		return NULL;
+
+	for (int i = 0; i < l_extract; i++)
+	{
+		for (int j = 0; j < c_extract; j++)
+			extract_mat[i][j] = mat[i][j];
+
+		for (int j = c_extract; j < nb_col-1; j++)
+			extract_mat[i][j] = mat[i][j+1];
+	}
+
+	for (int i = l_extract; i < nb_lines-1; i++)
+	{
+		for (int j = 0; j < c_extract; j++)
+			extract_mat[i][j] = mat[i+1][j];
+
+		for (int j = c_extract; j < nb_col-1; j++)
+			extract_mat[i][j] = mat[i+1][j+1];
+	}
+	return extract_mat;
+}
