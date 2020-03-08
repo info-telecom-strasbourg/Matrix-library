@@ -64,5 +64,17 @@ long double** term_to_term_opp(long double**A, int lA, int cA,
 void all_terms_opp(long double**A, int lA, int cA,
 			    float fact, char symb);
 
-	
+/**
+ *@brief Calculate a matrix product.
+ *
+ *@param A: a matrix A (two dimension table).
+ *@param lA: the number of lines of the matrix A.
+ *@param cA: the number of columns of the matrix A.
+ *@param A: a matrix B (two dimension table).
+ *@param lB: the number of lines of the matrix B.
+ *@param cB: the number of columns of the matrix B.
+ *@result a matrix (two dimension table), the product of 2 matrix.
+*/
+long double** prod_matrix(long double**A, int lA, int cA,
+			  long double**B, int lB, int cB);
 #endif

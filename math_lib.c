@@ -130,3 +130,32 @@ all_terms_opp(long double**A, int lA, int cA,
 					opperation\n");
 	}
 }
+
+long double**
+matrix_prod(long double**A, int lA, int cA,
+			  long double**B, int lB, int cB)
+{
+	if (cA != lB)
+	{
+		fprintf(stderr, "dimension error in matrix_prod()\n");
+		return NULL;
+	}
+
+	long double** C = create_matrix(lA, cB);
+
+	if (C == NULL)
+		return NULL;
+
+	long double cij = 0;
+	for (int i=0; i <lA; i++)
+	{
+		for (int j=0; j< cB; j++)
+		{
+			cij = 0;
+			for (int k = 0; k < cA; k++)
+				cij += A[i][k] * B[k][j];
+			C[i][j] = cij;
+		}
+	}
+	return C;
+}
