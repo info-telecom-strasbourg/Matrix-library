@@ -118,4 +118,13 @@ void print_matrix(long double** mat, int nb_lines, int nb_col);
 */
 long double matrix_trace(long double** A, int nb_lines, int nb_col);
 
+/**
+ *@brief Calculate a matrix transpose.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@result a matrix transpose (two dimension table).
+*/
+long double** matrix_transpose(long double** mat, int nb_lines, int nb_col);
+
 #endif

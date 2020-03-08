@@ -257,3 +257,18 @@ matrix_trace(long double** A, int nb_lines, int nb_col)
 
 	return trace;
 }
+
+long double**
+matrix_transpose(long double** mat, int nb_lines, int nb_col)
+{
+	long double** mat_transp = create_matrix(nb_col, nb_lines);
+
+	if (mat_transp == NULL)
+		return NULL;
+
+	for (int i = 0; i < nb_lines; i++)
+		for (int j = 0; j < nb_col; j++)
+			mat_transp[j][i] = mat[i][j];
+
+	return mat_transp;
+}
