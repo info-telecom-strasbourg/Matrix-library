@@ -1,6 +1,6 @@
 CFLAGS?=-Werror -Wextra -Wall -g
 
-tests: test_matrix.o math_lib.o
+tests_matrix: test_matrix.o math_lib.o
 	gcc $(CFLAGS) -o tests $^
 
 math_lib.o: math_lib.c math_lib.h
@@ -9,7 +9,7 @@ math_lib.o: math_lib.c math_lib.h
 test_matrix.o: test_matrix.c
 	gcc $(CFLAGS) -o test_matrix.o -c test_matrix.c
 
-test:
+tests:
 	make
 	valgrind --leak-check=full -q ./tests
 
