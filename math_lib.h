@@ -77,4 +77,35 @@ void all_terms_opp(long double**A, int lA, int cA,
 */
 long double** prod_matrix(long double**A, int lA, int cA,
 			  long double**B, int lB, int cB);
+
+
+/**
+*@brief the longest number to print.
+*
+*@param mat: the matrix.
+*@param nb_lines: the number of lines of the matrix.
+*@param nb_col: the number of columns of the matrix.
+*@result the maximum line length of the line.
+*/
+int max_line(long double** mat, int nb_lines, int nb_col);
+
+/**
+*@brief the longest number to print on the last column.
+*
+*@param mat: the matrix.
+*@param nb_lines: the number of lines of the matrix.
+*@param nb_col: the number of columns of the matrix.
+*@result the maximum line length of the line.
+*/
+int max_last_line(long double** mat, int nb_lines, int nb_col);
+
+/**
+*@brief Print a matrix.
+*
+*@param mat: the matrix.
+*@param nb_lines: the number of lines of the matrix.
+*@param nb_col: the number of columns of the matrix.
+*/
+void print_matrix(long double** mat, int nb_lines, int nb_col);
+
 #endif

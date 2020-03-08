@@ -159,3 +159,88 @@ matrix_prod(long double**A, int lA, int cA,
 	}
 	return C;
 }
+
+int
+max_line(long double** mat, int nb_lines, int nb_col)
+{
+	char buf[10];
+	int length = 0;
+	int max_length = 0;
+	for (int i=0; i < nb_lines; i++)
+	{
+		for (int j=0; j < nb_col; j++)
+		{
+			buf[0] = '\0';
+			CHK_SNPRTF(snprintf(buf,LENGTH_PRINT, "%.2Lf",
+					    mat[i][j]));
+			length = strlen(buf);
+
+			if (length > max_length)
+				max_length = length;
+		}
+
+	}
+	return max_length;
+}
+
+int
+max_last_line(long double** mat, int nb_lines, int nb_col)
+{
+	char buf[10];
+	int length = 0;
+	int max_length = 0;
+	for (int i=0; i < nb_lines; i++)
+	{
+		buf[0] = '\0';
+		CHK_SNPRTF(snprintf(buf,LENGTH_PRINT, "%.2Lf",
+			     mat[i][nb_col-1]));
+		length = strlen(buf);
+
+		if (length > max_length)
+			max_length = length;
+
+	}
+	return max_length;
+}
+
+void
+print_matrix(long double** mat, int nb_lines, int nb_col)
+{
+	int line_length = max_line(mat, nb_lines, nb_col);
+	int max_last_ln = max_last_line(mat, nb_lines, nb_col);
+	char buf[10];
+	printf(" --");
+
+	for (int i = 2; i < (nb_col-1)*(line_length + 2) + max_last_ln +1; i++)
+		printf(" ");
+
+	printf("--\n");
+	for (int i=0; i < nb_lines; i++)
+	{
+		printf("| ");
+		for (int j=0; j < nb_col-1; j++)
+		{
+			buf[0] = '\0';
+			CHK_SNPRTF(snprintf(buf, LENGTH_PRINT,"%.2Lf",
+					    mat[i][j]));
+			printf("%s", buf);
+
+			for (int j = strlen(buf); j < line_length +2; j++)
+				printf(" ");
+		}
+		buf[0] = '\0';
+		CHK_SNPRTF(snprintf(buf, LENGTH_PRINT,"%.2Lf",
+				      mat[i][nb_col-1]));
+		printf("%s", buf);
+
+		for (int j = strlen(buf); j < max_last_ln +2; j++)
+			printf(" ");
+		printf("|\n");
+	}
+	printf(" --");
+
+	for (int i = 2; i < (nb_col-1)*(line_length + 2) + max_last_ln +1; i++)
+		printf(" ");
+
+	printf("--\n");
+}
