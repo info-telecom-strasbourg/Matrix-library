@@ -94,3 +94,39 @@ term_to_term_opp(long double**A, int lA, int cA,
 
 	return C;
 }
+
+void
+all_terms_opp(long double**A, int lA, int cA,
+			    float fact, char symb)
+{
+	switch(symb)
+	{
+		case '+':
+			for (int i=0; i <lA; i++)
+				for (int j=0; j< cA; j++)
+					A[i][j] += fact;
+			break;
+		case '-':
+			for (int i=0; i <lA; i++)
+				for (int j=0; j< cA; j++)
+					A[i][j] -= fact;
+			break;
+		case '*':
+			for (int i=0; i <lA; i++)
+				for (int j=0; j< cA; j++)
+					A[i][j] *= fact;
+			break;
+		case '/':
+			for (int i=0; i <lA; i++)
+				for (int j=0; j< cA; j++)
+					if (fact != 0)
+						A[i][j] /= fact;
+					else
+						fprintf(stderr, "/0: \
+							term_to_term_opp\n");
+			break;
+		default:
+			fprintf(stderr, "term_to_term_opp: not an \
+					opperation\n");
+	}
+}
