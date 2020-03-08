@@ -382,3 +382,30 @@ co_matrix(long double** mat, int nb_lines, int nb_col)
 
 	return co_mat;
 }
+
+long double**
+matrix_invert(long double** mat, int nb_lines, int nb_col)
+{
+	if (nb_lines != nb_col)
+		fprintf(stderr, "invert used on a not a square matrix\n");
+
+	long double** mat_inv_trans = co_matrix(mat, nb_lines, nb_col);
+
+	if (mat_inv_trans == NULL)
+		return NULL;
+
+	long double coef = 1/matrix_det(mat, nb_lines, nb_col);
+
+
+
+	long double** mat_inv = matrix_transpose(mat_inv_trans, nb_lines,
+					         nb_col);
+	if (mat_inv == NULL)
+		return NULL;
+
+	delete_matrix(mat_inv_trans, nb_lines);
+
+	all_terms_opp(mat_inv, nb_lines, nb_col, coef, '*');
+
+	return mat_inv;
+}
