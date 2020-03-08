@@ -244,3 +244,16 @@ print_matrix(long double** mat, int nb_lines, int nb_col)
 
 	printf("--\n");
 }
+
+long double
+matrix_trace(long double** A, int nb_lines, int nb_col)
+{
+	if (nb_lines != nb_col)
+		fprintf(stderr, "trace used on a not a square matrix\n");
+
+	long double trace = 0;
+	for (int i = 0; i < nb_lines; i++)
+		trace += A[i][i];
+
+	return trace;
+}

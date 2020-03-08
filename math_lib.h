@@ -108,4 +108,14 @@ int max_last_line(long double** mat, int nb_lines, int nb_col);
 */
 void print_matrix(long double** mat, int nb_lines, int nb_col);
 
+/**
+ *@brief Calculate a matrix product.
+ *
+ *@param A: a matrix A (two dimension table).
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@result the trace of the matrix.
+*/
+long double matrix_trace(long double** A, int nb_lines, int nb_col);
+
 #endif
