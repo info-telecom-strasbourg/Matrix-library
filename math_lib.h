@@ -184,4 +184,13 @@ long double** matrix_invert(long double** mat, int nb_lines, int nb_col);
 */
 long double** left_pseudo_inv(long double** mat, int nb_lines, int nb_col);
 
+/**
+ *@brief Calculate the right pseudo invert.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@result the pseudo invert right of the matrix.
+*/
+long double** right_pseudo_inv(long double** mat, int nb_lines, int nb_col);
+
 #endif

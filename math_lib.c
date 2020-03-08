@@ -440,3 +440,34 @@ left_pseudo_inv(long double** mat, int nb_lines, int nb_col)
 
 	return left_pseudo_inv;
 }
+
+long double**
+right_pseudo_inv(long double** mat, int nb_lines, int nb_col)
+{
+	if (nb_col < nb_lines)
+		fprintf(stderr, "error dimmension left pseudoinverse\n");
+
+	long double** mat_trans = matrix_transpose(mat, nb_lines, nb_col);
+	if (mat_trans == NULL)
+		return NULL;
+
+	long double** term_1 = matrix_prod(mat, nb_lines, nb_col,
+					   mat_trans, nb_col, nb_lines);
+	if (term_1 == NULL)
+		return NULL;
+
+	long double** term_1_inv = matrix_invert(term_1, nb_lines, nb_lines);
+	if (term_1_inv == NULL)
+		return NULL;
+
+	long double** right_psd_inv = matrix_prod(mat_trans, nb_col, nb_lines,
+						term_1_inv, nb_lines, nb_lines);
+	if (right_psd_inv == NULL)
+		return NULL;
+
+	delete_matrix(mat_trans, nb_col);
+	delete_matrix(term_1, nb_col);
+	delete_matrix(term_1_inv, nb_lines);
+
+	return right_psd_inv;
+}
