@@ -354,3 +354,31 @@ matrix_extract(long double** mat, int nb_lines, int nb_col,
 	}
 	return extract_mat;
 }
+
+long double**
+co_matrix(long double** mat, int nb_lines, int nb_col)
+{
+	if (nb_lines != nb_col)
+		fprintf(stderr, "invert used on a not a square matrix\n");
+
+	long double** co_mat = create_matrix(nb_lines, nb_col);
+
+	if (co_mat == NULL)
+		return NULL;
+
+	for (int i = 0; i < nb_lines; i++)
+		for (int j = 0; j < nb_col; j++)
+		{
+			long double** under_mat= matrix_extract(mat,nb_lines,
+								nb_col,i,j);
+
+			if (under_mat == NULL)
+				return NULL;
+
+			co_mat[i][j] = mypow(-1,i+j) * matrix_det(under_mat,
+							 nb_lines-1, nb_col-1);
+			delete_matrix(under_mat, nb_lines-1);
+		}
+
+	return co_mat;
+}

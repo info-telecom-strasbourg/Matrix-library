@@ -157,4 +157,13 @@ long double matrix_det(long double** mat, int nb_lines, int nb_col);
 long double** matrix_extract(long double** mat, int nb_lines, int nb_col,
 			     int l_extract, int c_extract);
 
+/**
+ *@brief Calculate a matrix invert.
+ *
+ *@param nb_lines: the number of lines of the matrix.
+ *@param nb_col: the number of columns of the matrix.
+ *@result the invert of the matrix.
+*/
+long double** co_matrix(long double** mat, int nb_lines, int nb_col);
+
 #endif
