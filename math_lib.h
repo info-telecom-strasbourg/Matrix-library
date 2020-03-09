@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdarg.h>
+#include "tps_unit_test_2.h"
+
 
 #define LENGTH_PRINT 10
 #define CHK(op) do { \if (op == -1) raler(#op) ; } while (0)

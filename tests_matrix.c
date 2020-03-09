@@ -2,6 +2,11 @@
 #include "tps_unit_test_2.h"
 #include "math_lib.h"
 
+#define COLOR_OFF "\033[0m"
+#define GREEN "\033[0;32m"
+#define BLUE "\033[0;34m"
+#define CYAN "\033[0;36m"
+
 int __remaining_alloc;
 
 void test_create_matrix(void)
@@ -45,8 +50,9 @@ void test_initialisation(void)
 }
 
 int main(void) {
+	printf(CYAN "\n==== Fonctions de bases ====\n" COLOR_OFF);
 	TEST(test_create_matrix);
-	//TEST(test_alloc_fail);
+	TEST(test_alloc_fail);
 	TEST(test_initialisation);
 	return 0;
 }

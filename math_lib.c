@@ -394,9 +394,16 @@ matrix_invert(long double** mat, int nb_lines, int nb_col)
 	if (mat_inv_trans == NULL)
 		return NULL;
 
-	long double coef = 1/matrix_det(mat, nb_lines, nb_col);
+	float det = matrix_det(mat, nb_lines, nb_col);
 
+	if ( det == 0 )
+	{
+		fprintf(stderr, "can not invert this matrix\n");
+		return NULL;
 
+	}
+
+	long double coef = 1/det;
 
 	long double** mat_inv = matrix_transpose(mat_inv_trans, nb_lines,
 					         nb_col);
