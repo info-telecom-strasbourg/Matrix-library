@@ -16,7 +16,7 @@
 	 				fprintf(stderr, "snprintf failure");} while (0)
 
 /**
- *@brief Calcul une puissance.
+ *@brief Calcul a exponant.
  *
  *@param a: the number.
  *@param exp: the exposant.

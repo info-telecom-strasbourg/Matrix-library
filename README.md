@@ -1,6 +1,6 @@
 # Matrix-library
 
-A library that allow matrix calculations
+A library that allows matrix calculations
 
 ## Summary
 
